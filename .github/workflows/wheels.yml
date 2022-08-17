@@ -32,7 +32,7 @@ jobs:
                              PYTHON_LIB=$(python -c 'import sysconfig; print(sysconfig.get_config_var("LIBDIR"))');
                              mkdir build;
                              cd build;
-                             cmake .. -DBUILD_ZFPY=ON -DBUILD_TESTING=OFF -DPYTHON_LIBRARY=$PYTHON_LIB -DPYTHON_INCLUDE_DIR=$PYTHON_INCLUDE -DBUILD_SHARED_LIBS=OFF;
+                             cmake .. -DBUILD_ZFPY=ON -DBUILD_TESTING=OFF -DPYTHON_LIBRARY=$PYTHON_LIB -DPYTHON_INCLUDE_DIR=$PYTHON_INCLUDE -DBUILD_SHARED_LIBS=ON;
                              make;
                              cd ..;
                              mkdir build/lib/Release;
