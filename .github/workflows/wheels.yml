@@ -20,7 +20,10 @@ jobs:
       - uses: actions/setup-python@v2
 
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel
+        run: >- 
+            which python;
+            uname -m;
+            python -m pip install cibuildwheel
 
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
