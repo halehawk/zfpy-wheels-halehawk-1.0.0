@@ -40,9 +40,11 @@ jobs:
                              cp -RP build/lib/libzfp.*  build/lib/Release;
                              ls build/lib;
           CIBW_REPAIR_WHEEL_COMMAND_MACOS: >
-             DYLD_LIBRARY_PATH=/Users/runner/work/zfpy-wheels-halehawk-1.0.0/zfpy-wheels-halehawk-1.0.0/build/lib/Release delocate-listdeps {wheel} &&
-             DYLD_LIBRARY_PATH=/Users/runner/work/zfpy-wheels-halehawk-1.0.0/zfpy-wheels-halehawk-1.0.0/build/lib/Release delocate-wheel --require-archs {delocate_archs} -w {dest_dir} {wheel}
+             DYLD_LIBRARY_PATH=/Users/runner/work/zfpy-wheels-halehawk-1.0.0/zfpy-wheels-halehawk-1.0.0/build/lib/Release delocate-listdeps {wheel} --verbose &&
+             DYLD_LIBRARY_PATH=/Users/runner/work/zfpy-wheels-halehawk-1.0.0/zfpy-wheels-halehawk-1.0.0/build/lib/Release delocate-wheel --require-archs {delocate_archs} -w {dest_dir} {wheel} --verbose
 
+      - name: look at dylib
+        run: otool -L
       - uses: actions/upload-artifact@v2
         with:
           path: ./wheelhouse/*.whl
